@@ -1,0 +1,66 @@
+{
+  "categories": [
+    { "id": "1", "name": "Beverages" },
+    { "id": "2", "name": "Snacks" },
+    { "id": "3", "name": "Produce" },
+    { "id": "4", "name": "Dairy" },
+    { "id": "5", "name": "Bakery" },
+    { "id": "6", "name": "Frozen Foods" },
+    { "id": "7", "name": "Meat" },
+    { "id": "8", "name": "Seafood" },
+    { "id": "9", "name": "Household Items" },
+    { "id": "10", "name": "Personal Care" }
+  ],
+  "products": [
+    { "id": "101", "name": "Coca Cola", "category": "Beverages", "price": 1.5, "quantity": 50, "unit": "pcs" },
+    { "id": "102", "name": "Pepsi", "category": "Beverages", "price": 1.4, "quantity": 40, "unit": "pcs" },
+    { "id": "103", "name": "Chips", "category": "Snacks", "price": 2.0, "quantity": 30, "unit": "pcs" },
+    { "id": "104", "name": "Chocolate Bar", "category": "Snacks", "price": 1.0, "quantity": 100, "unit": "pcs" },
+    { "id": "105", "name": "Apples", "category": "Produce", "price": 3.0, "quantity": 100, "unit": "kg" },
+    { "id": "106", "name": "Bananas", "category": "Produce", "price": 2.5, "quantity": 80, "unit": "kg" },
+    { "id": "107", "name": "Milk", "category": "Dairy", "price": 1.2, "quantity": 60, "unit": "liters" },
+    { "id": "108", "name": "Cheese", "category": "Dairy", "price": 4.0, "quantity": 40, "unit": "pcs" },
+    { "id": "109", "name": "Bread", "category": "Bakery", "price": 2.0, "quantity": 50, "unit": "pcs" },
+    { "id": "110", "name": "Croissant", "category": "Bakery", "price": 1.5, "quantity": 30, "unit": "pcs" },
+    { "id": "111", "name": "Frozen Pizza", "category": "Frozen Foods", "price": 5.0, "quantity": 20, "unit": "pcs" },
+    { "id": "112", "name": "Ice Cream", "category": "Frozen Foods", "price": 3.5, "quantity": 50, "unit": "pcs" },
+    { "id": "113", "name": "Chicken Breast", "category": "Meat", "price": 6.0, "quantity": 30, "unit": "kg" },
+    { "id": "114", "name": "Beef Steak", "category": "Meat", "price": 8.0, "quantity": 20, "unit": "kg" },
+    { "id": "115", "name": "Salmon Fillet", "category": "Seafood", "price": 12.0, "quantity": 15, "unit": "kg" },
+    { "id": "116", "name": "Shrimp", "category": "Seafood", "price": 10.0, "quantity": 10, "unit": "kg" },
+    { "id": "117", "name": "Dish Soap", "category": "Household Items", "price": 2.0, "quantity": 40, "unit": "pcs" },
+    { "id": "118", "name": "Laundry Detergent", "category": "Household Items", "price": 7.0, "quantity": 30, "unit": "pcs" },
+    { "id": "119", "name": "Shampoo", "category": "Personal Care", "price": 4.0, "quantity": 25, "unit": "pcs" },
+    { "id": "120", "name": "Toothpaste", "category": "Personal Care", "price": 3.0, "quantity": 35, "unit": "pcs" }
+  ],
+  "transactions": [
+    {
+      "id": "T001",
+      "date": "2024-12-01T10:30:00Z",
+      "items": [
+        { "id": "101", "name": "Coca Cola", "category": "Beverages", "price": 1.5, "quantity": 2, "unit": "pcs" },
+        { "id": "105", "name": "Apples", "category": "Produce", "price": 3.0, "quantity": 1, "unit": "kg" }
+      ],
+      "totalAmount": 6.0
+    },
+    {
+      "id": "T002",
+      "date": "2024-12-01T12:45:00Z",
+      "items": [
+        { "id": "103", "name": "Chips", "category": "Snacks", "price": 2.0, "quantity": 3, "unit": "pcs" },
+        { "id": "107", "name": "Milk", "category": "Dairy", "price": 1.2, "quantity": 2, "unit": "liters" }
+      ],
+      "totalAmount": 8.4
+    },
+    {
+      "id": "T003",
+      "date": "2024-12-02T08:15:00Z",
+      "items": [
+        { "id": "109", "name": "Bread", "category": "Bakery", "price": 2.0, "quantity": 1, "unit": "pcs" },
+        { "id": "110", "name": "Croissant", "category": "Bakery", "price": 1.5, "quantity": 4, "unit": "pcs" },
+        { "id": "112", "name": "Ice Cream", "category": "Frozen Foods", "price": 3.5, "quantity": 2, "unit": "pcs" }
+      ],
+      "totalAmount": 12.5
+    }
+  ]
+}
