@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:haron_pos/config/theme.dart';
+import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
+import 'package:haron_pos/presentation/blocs/product/product_event';
 import 'package:haron_pos/presentation/pages/home_page.dart';
 
 void main() {
@@ -14,7 +17,10 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: HomePage(),
+      home: BlocProvider(
+        create: (context) => ProductBloc()..add(LoadProducts()),
+        child: HomePage(),
+      ),
     );
   }
 }
