@@ -62,5 +62,97 @@
       ],
       "totalAmount": 12.5
     }
+  ],
+  "orders": [
+    {
+      "id": "ORD1001",
+      "date": "2024-12-01T10:00:00Z",
+      "products": [
+        { "id": "101", "name": "Coca Cola", "category": "Beverages", "price": 1.5, "quantity": 2, "unit": "pcs" },
+        { "id": "103", "name": "Chips", "category": "Snacks", "price": 2.0, "quantity": 1, "unit": "pcs" }
+      ],
+      "totalAmount": 5.0,
+      "paymentMethod": "Cash",
+      "isPaid": true,
+      "orderType": "dineIn",
+      "customer": {
+        "name": "John Doe",
+        "phone": "+123456789",
+        "address": null,
+        "gender": "male"
+      }
+    },
+    {
+      "id": "ORD1002",
+      "date": "2024-12-01T12:30:00Z",
+      "products": [
+        { "id": "107", "name": "Milk", "category": "Dairy", "price": 1.2, "quantity": 3, "unit": "liters" },
+        { "id": "109", "name": "Bread", "category": "Bakery", "price": 2.0, "quantity": 2, "unit": "pcs" }
+      ],
+      "totalAmount": 7.6,
+      "paymentMethod": "Card",
+      "isPaid": true,
+      "orderType": "toGo",
+      "customer": {
+        "name": "Jane Smith",
+        "phone": "+987654321",
+        "address": null,
+        "gender": "female"
+      }
+    },
+    {
+      "id": "ORD1003",
+      "date": "2024-12-01T14:45:00Z",
+      "products": [
+        { "id": "110", "name": "Croissant", "category": "Bakery", "price": 1.5, "quantity": 4, "unit": "pcs" },
+        { "id": "113", "name": "Chicken Breast", "category": "Meat", "price": 6.0, "quantity": 1, "unit": "kg" }
+      ],
+      "totalAmount": 12.0,
+      "paymentMethod": "Mobile Payment",
+      "isPaid": false,
+      "orderType": "delivery",
+      "customer": {
+        "name": "Emily Johnson",
+        "phone": "+5647382910",
+        "address": "456 Elm Street, Metropolis",
+        "gender": "female"
+      }
+    },
+    {
+      "id": "ORD1004",
+      "date": "2024-12-02T09:15:00Z",
+      "products": [
+        { "id": "115", "name": "Salmon Fillet", "category": "Seafood", "price": 12.0, "quantity": 2, "unit": "kg" },
+        { "id": "118", "name": "Laundry Detergent", "category": "Household Items", "price": 7.0, "quantity": 1, "unit": "pcs" }
+      ],
+      "totalAmount": 31.0,
+      "paymentMethod": "Cash",
+      "isPaid": true,
+      "orderType": "toGo",
+      "customer": {
+        "name": "Chris Evans",
+        "phone": "+1122334455",
+        "address": null,
+        "gender": "male"
+      }
+    },
+    {
+      "id": "ORD1005",
+      "date": "2024-12-02T11:00:00Z",
+      "products": [
+        { "id": "119", "name": "Shampoo", "category": "Personal Care", "price": 4.0, "quantity": 3, "unit": "pcs" },
+        { "id": "112", "name": "Ice Cream", "category": "Frozen Foods", "price": 3.5, "quantity": 1, "unit": "pcs" }
+      ],
+      "totalAmount": 15.5,
+      "paymentMethod": "Card",
+      "isPaid": true,
+      "orderType": "dineIn",
+      "customer": {
+        "name": "Taylor Swift",
+        "phone": "+9988776655",
+        "address": null,
+        "gender": "female"
+      }
+    }
   ]
 }
