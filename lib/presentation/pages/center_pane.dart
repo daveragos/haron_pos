@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
-import 'package:haron_pos/presentation/blocs/product/product_event';
+import 'package:haron_pos/presentation/blocs/product/product_event.dart';
 import 'package:haron_pos/presentation/blocs/product/product_state.dart';
 
 
@@ -69,10 +69,22 @@ class _CenterPaneState extends State<CenterPane> with TickerProviderStateMixin {
                     final product = state.products[index];
                     return Card(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(product.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                          Text('\$${product.price.toStringAsFixed(2)}'),
+                          Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/${product.id}.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(product.name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                Text('\$${product.price.toStringAsFixed(2)}'),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     );

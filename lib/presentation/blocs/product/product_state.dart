@@ -28,3 +28,39 @@ class ProductError extends ProductState {
   @override
   List<Object> get props => [message];
 }
+
+class ProductDetails extends ProductState {
+  final Product product;
+
+  ProductDetails(this.product);
+
+  @override
+  List<Object> get props => [product];
+}
+
+class ProductCart extends ProductState {
+  final List<Product> products;
+
+  ProductCart(this.products);
+
+  @override
+  List<Object> get props => [products];
+}
+
+class ProductCheckout extends ProductState {
+  final List<Product> products;
+
+  ProductCheckout(this.products);
+
+  @override
+  List<Object> get props => [products];
+}
+
+class ProductOrder extends ProductState {
+  final List<Product> products;
+
+  ProductOrder(this.products);
+
+  @override
+  List<Object> get props => [products];
+}

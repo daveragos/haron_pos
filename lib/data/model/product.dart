@@ -36,4 +36,22 @@ class Product {
       'unit': unit,
     };
   }
+
+  Product copyWith({
+    String? id,
+    String? name,
+    String? category,
+    double? price,
+    int? quantity,
+    String? unit,
+  }) {
+    return Product(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      category: category ?? this.category,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      unit: unit ?? this.unit,
+    );
+  }
 }

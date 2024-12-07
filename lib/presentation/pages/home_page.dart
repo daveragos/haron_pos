@@ -3,33 +3,44 @@ import 'package:haron_pos/config/theme.dart';
 import 'package:haron_pos/presentation/pages/center_pane.dart';
 import 'package:haron_pos/presentation/pages/left_pane.dart';
 import 'package:haron_pos/presentation/pages/right_pane.dart';
+import 'package:sidebarx/sidebarx.dart';
 
-class HomePage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final SidebarXController _controller = SidebarXController(selectedIndex: 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.accentColor,
-      body: const Row(
-        children: [
-          // Left Pane
-          Expanded(
-            flex: 1,
-            child: LeftPane(),
-          ),
+      backgroundColor: AppTheme.accentColor.withOpacity(0.5),
+      appBar: AppBar(
+        title: const Text('POS System'),
 
-          // Center Pane
+      ),
+      // drawer: Drawer(
+      //   child: LeftPaneDrawer(controller: _controller),
+      // ),
+      body: Row(
+        children: [
+          // Optional: If you want SidebarX fixed to the side, not as a drawer
+          SizedBox(
+            width: 250,
+            child: LeftPaneDrawer(controller: _controller),
+          ),
           Expanded(
-            flex: 7,
+            flex: 2,
             child: CenterPane(),
           ),
-
-          // Right Pane
-          Expanded(
-            flex: 3,
-            child: RightPane()
-          ),
+          Expanded(child:RightPane(),),
         ],
       ),
     );
   }
 }
+
