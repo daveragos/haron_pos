@@ -83,14 +83,23 @@ void _onDetailsOfProduct(DetailsOfProduct event, Emitter<ProductState> emit) {
   emit(ProductDetails(product));
 }
 
+
 void _onAddToCart(AddToCart event, Emitter<ProductState> emit) {
   final product = allProducts.firstWhere((product) => product.id == event.productId);
-  emit(ProductCart([...cartProducts, product]));
+  cartProducts.add(product); // Add to cart
+  emit(ProductLoaded(allProducts, allCategories)); // Keep state consistent
 }
 
 void _onRemoveFromCart(RemoveFromCart event, Emitter<ProductState> emit) {
-  final product = allProducts.firstWhere((product) => product.id == event.productId);
-  emit(ProductCart(cartProducts.where((product) => product.id != event.productId).toList()));
+  cartProducts.removeWhere((product) => product.id == event.productId); // Remove from cart
+  emit(ProductLoaded(allProducts, allCategories)); // Keep state consistent
+}
+
+void _onUpdateTotalAmount(UpdateTotalAmount event, Emitter<ProductState> emit) {
+  // Calculate the total amount
+  final total = cartProducts.fold(0.0, (sum, product) => sum + product.price * product.quantity);
+  print("Total Amount: $total");
+  emit(ProductLoaded(allProducts, allCategories));
 }
 
 void _onUpdateQuantity(UpdateQuantity event, Emitter<ProductState> emit) {
@@ -128,11 +137,6 @@ void _onUpdateOrderType(UpdateOrderType event, Emitter<ProductState> emit) {
 }
 
 void _onUpdateCustomer(UpdateCustomer event, Emitter<ProductState> emit) {
-  emit(ProductCart(cartProducts));
-}
-
-void _onUpdateTotalAmount(UpdateTotalAmount event, Emitter<ProductState> emit) {
-  // TODO: Calculate total amount
   emit(ProductCart(cartProducts));
 }
 

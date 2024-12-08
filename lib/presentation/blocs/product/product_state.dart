@@ -57,6 +57,7 @@ class ProductCheckout extends ProductState {
 }
 
 class ProductOrder extends ProductState {
+
   final List<Product> products;
 
   ProductOrder(this.products);
