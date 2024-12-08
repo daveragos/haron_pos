@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:haron_pos/config/theme.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_state.dart';
 
@@ -9,7 +10,8 @@ class RightPane extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blueGrey.withOpacity(0.2),
+
+      color: AppTheme.accentColor.withOpacity(0.2),
       child: Column(
         children: [
           const Padding(

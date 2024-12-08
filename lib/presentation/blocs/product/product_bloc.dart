@@ -85,10 +85,37 @@ void _onDetailsOfProduct(DetailsOfProduct event, Emitter<ProductState> emit) {
 
 
 void _onAddToCart(AddToCart event, Emitter<ProductState> emit) {
-  final product = allProducts.firstWhere((product) => product.id == event.productId);
-  cartProducts.add(product); // Add to cart
-  emit(ProductLoaded(allProducts, allCategories)); // Keep state consistent
+  final product = allProducts.firstWhere((p) => p.id == event.productId);
+
+  // Check if the product already exists in the cart
+  final existingProduct = cartProducts.firstWhere(
+    (p) => p.id == product.id,
+    orElse: () => Product(
+      id: '',
+      name: '',
+      category: '',
+      price: 0,
+      quantity: 0,
+      unit: '',
+    ),
+  );
+
+  if (existingProduct.id.isNotEmpty) {
+    // Update quantity
+    cartProducts = cartProducts.map((p) {
+      if (p.id == product.id) {
+        return p.copyWith(quantity: p.quantity + 1);
+      }
+      return p;
+    }).toList();
+  } else {
+    // Add new product to the cart with quantity 1
+    cartProducts.add(product.copyWith(quantity: 1));
+  }
+
+  emit(ProductLoaded(allProducts, allCategories));
 }
+
 
 void _onRemoveFromCart(RemoveFromCart event, Emitter<ProductState> emit) {
   cartProducts.removeWhere((product) => product.id == event.productId); // Remove from cart
@@ -96,9 +123,12 @@ void _onRemoveFromCart(RemoveFromCart event, Emitter<ProductState> emit) {
 }
 
 void _onUpdateTotalAmount(UpdateTotalAmount event, Emitter<ProductState> emit) {
-  // Calculate the total amount
-  final total = cartProducts.fold(0.0, (sum, product) => sum + product.price * product.quantity);
-  print("Total Amount: $total");
+  final totalAmount = cartProducts.fold(
+    0.0,
+    (sum, product) => sum + (product.price * product.quantity),
+  );
+
+  print('Total Amount: \$${totalAmount.toStringAsFixed(2)}');
   emit(ProductLoaded(allProducts, allCategories));
 }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:haron_pos/config/theme.dart';
 import 'package:haron_pos/data/model/product.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_event.dart';
@@ -101,13 +102,21 @@ class _CenterPaneState extends State<CenterPane> with TickerProviderStateMixin {
     );
   }
 }
-class ProductCard extends StatelessWidget {
+
+class ProductCard extends StatefulWidget {
   const ProductCard({
     super.key,
     required this.product,
   });
 
   final Product product;
+
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
+  int _quantityToAdd = 1; // Local counter for quantity adjustments
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +126,7 @@ class ProductCard extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Image.asset(
-              'assets/${product.id}.jpg',
+              'assets/${widget.product.id}.jpg',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
@@ -129,11 +138,11 @@ class ProductCard extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(product.name,
+                  Text(widget.product.name,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.bold)),
-                  Text('\$${product.price.toStringAsFixed(2)}'),
+                  Text('\$${widget.product.price.toStringAsFixed(2)}'),
                 ],
               ),
               const Spacer(),
@@ -141,24 +150,83 @@ class ProductCard extends StatelessWidget {
           ),
           Row(
             children: [
-              Expanded(
+              const SizedBox(width: 4),
+              // Decrease quantity
+              Container(
+                decoration: BoxDecoration(
+                  color: AppTheme.highlightColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+                ),
                 child: IconButton(
                   onPressed: () {
-                    context.read<ProductBloc>().add(AddToCart(product.id));
+                    setState(() {
+                      if (_quantityToAdd > 1) {
+                        _quantityToAdd--;
+                      }
+                    });
+                  },
+                  icon: const Icon(Icons.remove),
+                ),
+              ),
+              const SizedBox(width: 8),
+              // Display quantity
+              Text(
+                '$_quantityToAdd',
+                style: const TextStyle(fontSize: 18),
+              ),
+              const SizedBox(width: 8),
+              // Increase quantity
+              Container(
+                decoration: BoxDecoration(
+                  color: AppTheme.secondaryColor,
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
+                ),
+                child: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _quantityToAdd++;
+                    });
                   },
                   icon: const Icon(Icons.add),
                 ),
               ),
-              Expanded(
-                child: IconButton(
-                  onPressed: () {
-                    context.read<ProductBloc>().add(RemoveFromCart(product.id));
-                  },
-                  icon: const Icon(Icons.remove_circle_outline),
-                ),
+              const Spacer(),
+              // Add to cart button
+              ElevatedButton(
+                onPressed: () {
+                  // Add product to cart with the current quantity
+                  context.read<ProductBloc>().add(AddToCart(widget.product.id));
+
+                  // Update the quantity of the product in the cart
+                  final bloc = context.read<ProductBloc>();
+                  final cartProduct = bloc.cartProducts.firstWhere(
+                    (p) => p.id == widget.product.id,
+                    orElse: () => widget.product.copyWith(quantity: 0),
+                  );
+
+                  if (cartProduct.quantity == 0) {
+                    bloc.cartProducts.add(
+                        widget.product.copyWith(quantity: _quantityToAdd));
+                  } else {
+                    cartProduct.quantity += _quantityToAdd;
+                  }
+                  double totalAmount = bloc.cartProducts.fold(
+                    0.0,
+                    (sum, product) => sum + (product.price * product.quantity),
+                  );
+                  bloc.add(UpdateTotalAmount(totalAmount));
+
+                  // Reset the local quantity counter
+                  setState(() {
+                    _quantityToAdd = 1;
+                  });
+                },
+                child: const Text('Add'),
               ),
+              const SizedBox(width: 4),
             ],
-          )
+          ),
+          const SizedBox(height: 8),
         ],
       ),
     );

@@ -3,7 +3,7 @@ class Product {
   final String name;
   final String category;
   final double price;
-  final int quantity;
+ int quantity;
   final String unit; // e.g., "kg", "pcs"
 
   Product({

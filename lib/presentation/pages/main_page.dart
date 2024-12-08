@@ -4,7 +4,6 @@ import 'package:haron_pos/presentation/pages/categories_page.dart';
 import 'package:haron_pos/presentation/pages/center_pane.dart';
 import 'package:haron_pos/presentation/pages/left_pane.dart';
 import 'package:haron_pos/presentation/pages/order_page.dart';
-import 'package:haron_pos/presentation/pages/right_pane.dart';
 import 'package:haron_pos/presentation/pages/setting_page.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -30,7 +29,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: AppTheme.accentColor.withOpacity(0.5),
       appBar: AppBar(
-        title: const Text('POS System'),
+        title: const Text('Haron POS'),
       ),
       body: Row(
         children: [

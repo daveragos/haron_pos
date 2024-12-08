@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haron_pos/config/theme.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class LeftPaneDrawer extends StatelessWidget {
@@ -13,14 +14,14 @@ class LeftPaneDrawer extends StatelessWidget {
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.blueGrey.shade900,
+          color: AppTheme.highlightColor,
           borderRadius: BorderRadius.circular(20),
         ),
         textStyle: const TextStyle(color: Colors.white),
         selectedTextStyle: const TextStyle(color: Colors.white),
         itemTextPadding: const EdgeInsets.only(left: 20),
         selectedItemDecoration: BoxDecoration(
-          color: Colors.blueGrey.shade700,
+          color: AppTheme.accentColor,
           borderRadius: BorderRadius.circular(10),
         ),
         iconTheme: const IconThemeData(
