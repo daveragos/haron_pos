@@ -6,7 +6,7 @@ import 'package:haron_pos/presentation/blocs/bloc_observer.dart';
 import 'package:haron_pos/presentation/blocs/order/order_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_event.dart';
-import 'package:haron_pos/presentation/pages/main_page.dart';
+import 'package:haron_pos/presentation/pages/main/main_page.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();

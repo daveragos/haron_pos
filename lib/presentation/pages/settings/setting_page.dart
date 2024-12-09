@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:haron_pos/presentation/pages/list_settings_page.dart';
+import 'package:haron_pos/presentation/pages/settings/list_settings_page.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class SettingsPage extends StatefulWidget {

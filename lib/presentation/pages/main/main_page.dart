@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:haron_pos/config/theme.dart';
-import 'package:haron_pos/presentation/pages/categories_page.dart';
-import 'package:haron_pos/presentation/pages/center_pane.dart';
-import 'package:haron_pos/presentation/pages/left_pane.dart';
-import 'package:haron_pos/presentation/pages/order_page.dart';
-import 'package:haron_pos/presentation/pages/setting_page.dart';
+import 'package:haron_pos/presentation/pages/categories_page/categories_page.dart';
+import 'package:haron_pos/presentation/pages/product_page/center_pane.dart';
+import 'package:haron_pos/presentation/pages/main/left_pane.dart';
+import 'package:haron_pos/presentation/pages/order_page/order_page.dart';
+import 'package:haron_pos/presentation/pages/settings/setting_page.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class MainPage extends StatefulWidget {

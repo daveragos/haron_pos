@@ -5,7 +5,7 @@ import 'package:haron_pos/data/model/product.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_event.dart';
 import 'package:haron_pos/presentation/blocs/product/product_state.dart';
-import 'package:haron_pos/presentation/pages/right_pane.dart';
+import 'package:haron_pos/presentation/pages/product_page/right_pane.dart';
 
 class CenterPane extends StatefulWidget {
   const CenterPane({super.key});
