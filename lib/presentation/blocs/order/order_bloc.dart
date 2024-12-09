@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
 import 'package:haron_pos/data/model/order.dart';
+import 'package:haron_pos/data/repository/order_repo.dart';
 
 part 'order_event.dart';
 part 'order_state.dart';
@@ -41,17 +42,11 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   Future<void> _onLoadOrders(LoadOrders event, Emitter<OrderState> emit) async {
     try {
       emit(OrderLoading());
+      final List<Order> orders = await getAllOrders();
+      allOrders = orders;
 
-      // Load data from JSON
-      final String response = await rootBundle.loadString('assets/dummy.json');
-      final Map<String, dynamic> data = json.decode(response);
 
-      // Parse orders
-      final List<Order> orders = (data['orders'] as List)
-          .map((order) => Order.fromJson(order))
-          .toList();
-
-      emit(OrderLoaded(orders));
+      emit(OrderLoaded(allOrders));
     } catch (e) {
       emit(OrderError("Failed to load data: ${e.toString()}"));
     }

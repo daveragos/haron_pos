@@ -12,19 +12,29 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   final SidebarXController _controller = SidebarXController(selectedIndex: 0, extended: true);
 
-  List<Widget> settings = [
-    Container(color: Colors.yellow),
-    Container(color: Colors.blue),
-    Container(color: Colors.red),
-    Container(color: Colors.green),
+  final List<Widget> settings = [
+    Container(color: Colors.yellow), // Index 0
+    Container(color: Colors.blue),   // Index 1
+    Container(color: Colors.red),    // Index 2
+    Container(color: Colors.green), // Index 3
   ];
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      children:[
+      children: [
         Expanded(flex: 1, child: ListSetting(controller: _controller)),
-        Expanded(flex: 3, child: settings[_controller.selectedIndex]),
-      ]
+        // Use AnimatedBuilder to rebuild when the controller changes
+        Expanded(
+          flex: 3,
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, _) {
+              return settings[_controller.selectedIndex];
+            },
+          ),
+        ),
+      ],
     );
   }
 }

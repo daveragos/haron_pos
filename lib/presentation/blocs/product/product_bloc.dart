@@ -87,21 +87,21 @@ void _onDetailsOfProduct(DetailsOfProduct event, Emitter<ProductState> emit) {
 void _onAddToCart(AddToCart event, Emitter<ProductState> emit) {
   final product = allProducts.firstWhere((p) => p.id == event.productId);
 
-  // Check if the product already exists in the cart
+  // Check if the product is already in the cart
   final existingProduct = cartProducts.firstWhere(
     (p) => p.id == product.id,
     orElse: () => Product(
-      id: '',
-      name: '',
-      category: '',
-      price: 0,
-      quantity: 0,
-      unit: '',
+      id: product.id,
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      quantity: 0, // Default quantity if not in cart
+      unit: product.unit,
     ),
   );
 
-  if (existingProduct.id.isNotEmpty) {
-    // Update quantity
+  if (existingProduct.quantity > 0) {
+    // Update the quantity for an existing product
     cartProducts = cartProducts.map((p) {
       if (p.id == product.id) {
         return p.copyWith(quantity: p.quantity + 1);
@@ -109,12 +109,13 @@ void _onAddToCart(AddToCart event, Emitter<ProductState> emit) {
       return p;
     }).toList();
   } else {
-    // Add new product to the cart with specified quantity
+    // Add the product to the cart with quantity 1
     cartProducts.add(product.copyWith(quantity: 1));
   }
 
-  emit(ProductLoaded(allProducts, allCategories)); // Emit ProductLoaded consistently
+  emit(ProductLoaded(allProducts, allCategories));
 }
+
 
 void _onRemoveFromCart(RemoveFromCart event, Emitter<ProductState> emit) {
   cartProducts.removeWhere((product) => product.id == event.productId); // Remove product

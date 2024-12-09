@@ -58,7 +58,7 @@ class _CenterPaneState extends State<CenterPane> with TickerProviderStateMixin {
                 onTap: (index) {
                   final category = categories[index];
                   context
-                      .watch<ProductBloc>()
+                      .read<ProductBloc>()
                       .add(FilterProductsByCategory(category));
                 },
               ),
@@ -126,7 +126,7 @@ class _ProductCardState extends State<ProductCard> {
           Expanded(
             flex: 3,
             child: Image.asset(
-              'assets/${widget.product.id}.jpg',
+              'assets/pictures/${widget.product.id}.jpg',
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
@@ -195,27 +195,9 @@ class _ProductCardState extends State<ProductCard> {
              ElevatedButton(
   onPressed: () {
     // Add product to cart with the current quantity
-    context.watch<ProductBloc>().add(AddToCart(widget.product.id));
-
-    // Update the quantity in the cart
-    final bloc = context.watch<ProductBloc>();
-    final cartProduct = bloc.cartProducts.firstWhere(
-      (p) => p.id == widget.product.id,
-      orElse: () => widget.product.copyWith(quantity: 0),
-    );
-
-    if (cartProduct.quantity == 0) {
-      bloc.cartProducts.add(widget.product.copyWith(quantity: _quantityToAdd));
-    } else {
-      cartProduct.quantity += _quantityToAdd;
+    for (int i = 0; i < _quantityToAdd; i++) {
+      context.read<ProductBloc>().add(AddToCart(widget.product.id));
     }
-
-    // Emit updated total amount
-    double totalAmount = bloc.cartProducts.fold(
-      0.0,
-      (sum, product) => sum + (product.price * product.quantity),
-    );
-    bloc.add(UpdateTotalAmount(totalAmount));
 
     // Reset the local quantity counter
     setState(() {
@@ -224,6 +206,7 @@ class _ProductCardState extends State<ProductCard> {
   },
   child: const Text('Add'),
 ),
+
 
               const SizedBox(width: 4),
             ],
