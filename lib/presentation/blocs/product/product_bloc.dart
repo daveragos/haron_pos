@@ -109,18 +109,18 @@ void _onAddToCart(AddToCart event, Emitter<ProductState> emit) {
       return p;
     }).toList();
   } else {
-    // Add new product to the cart with quantity 1
+    // Add new product to the cart with specified quantity
     cartProducts.add(product.copyWith(quantity: 1));
   }
 
-  emit(ProductLoaded(allProducts, allCategories));
+  emit(ProductLoaded(allProducts, allCategories)); // Emit ProductLoaded consistently
 }
-
 
 void _onRemoveFromCart(RemoveFromCart event, Emitter<ProductState> emit) {
-  cartProducts.removeWhere((product) => product.id == event.productId); // Remove from cart
-  emit(ProductLoaded(allProducts, allCategories)); // Keep state consistent
+  cartProducts.removeWhere((product) => product.id == event.productId); // Remove product
+  emit(ProductLoaded(allProducts, allCategories)); // Emit ProductLoaded consistently
 }
+
 
 void _onUpdateTotalAmount(UpdateTotalAmount event, Emitter<ProductState> emit) {
   final totalAmount = cartProducts.fold(
@@ -143,7 +143,8 @@ void _onUpdateQuantity(UpdateQuantity event, Emitter<ProductState> emit) {
 }
 
 void _onClearCart(ClearCart event, Emitter<ProductState> emit) {
-  emit(ProductCart([]));
+  cartProducts.clear();
+  emit(ProductLoaded(allProducts, allCategories));
 }
 
 void _onCheckout(Checkout event, Emitter<ProductState> emit) {

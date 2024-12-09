@@ -58,7 +58,7 @@ class _CenterPaneState extends State<CenterPane> with TickerProviderStateMixin {
                 onTap: (index) {
                   final category = categories[index];
                   context
-                      .read<ProductBloc>()
+                      .watch<ProductBloc>()
                       .add(FilterProductsByCategory(category));
                 },
               ),
@@ -192,37 +192,39 @@ class _ProductCardState extends State<ProductCard> {
               ),
               const Spacer(),
               // Add to cart button
-              ElevatedButton(
-                onPressed: () {
-                  // Add product to cart with the current quantity
-                  context.read<ProductBloc>().add(AddToCart(widget.product.id));
+             ElevatedButton(
+  onPressed: () {
+    // Add product to cart with the current quantity
+    context.watch<ProductBloc>().add(AddToCart(widget.product.id));
 
-                  // Update the quantity of the product in the cart
-                  final bloc = context.read<ProductBloc>();
-                  final cartProduct = bloc.cartProducts.firstWhere(
-                    (p) => p.id == widget.product.id,
-                    orElse: () => widget.product.copyWith(quantity: 0),
-                  );
+    // Update the quantity in the cart
+    final bloc = context.watch<ProductBloc>();
+    final cartProduct = bloc.cartProducts.firstWhere(
+      (p) => p.id == widget.product.id,
+      orElse: () => widget.product.copyWith(quantity: 0),
+    );
 
-                  if (cartProduct.quantity == 0) {
-                    bloc.cartProducts.add(
-                        widget.product.copyWith(quantity: _quantityToAdd));
-                  } else {
-                    cartProduct.quantity += _quantityToAdd;
-                  }
-                  double totalAmount = bloc.cartProducts.fold(
-                    0.0,
-                    (sum, product) => sum + (product.price * product.quantity),
-                  );
-                  bloc.add(UpdateTotalAmount(totalAmount));
+    if (cartProduct.quantity == 0) {
+      bloc.cartProducts.add(widget.product.copyWith(quantity: _quantityToAdd));
+    } else {
+      cartProduct.quantity += _quantityToAdd;
+    }
 
-                  // Reset the local quantity counter
-                  setState(() {
-                    _quantityToAdd = 1;
-                  });
-                },
-                child: const Text('Add'),
-              ),
+    // Emit updated total amount
+    double totalAmount = bloc.cartProducts.fold(
+      0.0,
+      (sum, product) => sum + (product.price * product.quantity),
+    );
+    bloc.add(UpdateTotalAmount(totalAmount));
+
+    // Reset the local quantity counter
+    setState(() {
+      _quantityToAdd = 1;
+    });
+  },
+  child: const Text('Add'),
+),
+
               const SizedBox(width: 4),
             ],
           ),
