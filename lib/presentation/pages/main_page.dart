@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final SidebarXController _controller = SidebarXController(selectedIndex: 0);
+  final SidebarXController _controller = SidebarXController(selectedIndex: 0, extended: true);
 
   final List<Widget> _pages = [
     const CenterPane(), // Replace with your HomePage

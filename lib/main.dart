@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:haron_pos/config/theme.dart';
+import 'package:haron_pos/presentation/blocs/bloc/categories_bloc.dart';
 import 'package:haron_pos/presentation/blocs/bloc_observer.dart';
 import 'package:haron_pos/presentation/blocs/order/order_bloc.dart';
 import 'package:haron_pos/presentation/blocs/product/product_bloc.dart';
@@ -27,6 +28,9 @@ class MainApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => OrderBloc()..add(LoadOrders()),
+          ),
+          BlocProvider(
+            create: (context) => CategoriesBloc()..add(LoadCategories()),
           ),
         ],
         child: MainPage(),

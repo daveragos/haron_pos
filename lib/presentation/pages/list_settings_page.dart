@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:haron_pos/config/theme.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-class LeftPaneDrawer extends StatelessWidget {
+class ListSetting extends StatefulWidget {
   final SidebarXController controller;
 
-  const LeftPaneDrawer({super.key, required this.controller});
+  const ListSetting({super.key, required this.controller});
 
+  @override
+  State<ListSetting> createState() => _ListSettingState();
+}
+
+class _ListSettingState extends State<ListSetting> {
   @override
   Widget build(BuildContext context) {
     return SidebarX(
       showToggleButton: false,
-      controller: controller,
+
+      controller: widget.controller,
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: AppTheme.highlightColor,
+          color: AppTheme.secondaryColor,
           borderRadius: BorderRadius.circular(20),
         ),
         textStyle: const TextStyle(color: Colors.white),
@@ -34,13 +40,12 @@ class LeftPaneDrawer extends StatelessWidget {
           size: 28,
         ),
       ),
-      items: const [
-        SidebarXItem(icon: Icons.home, label: 'Home'),         // Index 0
-        SidebarXItem(icon: Icons.shopping_cart, label: 'Orders'), // Index 1
-        SidebarXItem(icon: Icons.category, label: 'Categories'), // Index 2
-        SidebarXItem(icon: Icons.settings, label: 'Settings'), // Index 3
+      items:  [
+        SidebarXItem(icon: Icons.looks, label: 'Appereance',),        // Index 0
+        SidebarXItem(icon: Icons.payment, label: 'Payment'), // Index 1
+        SidebarXItem(icon: Icons.store, label: 'Products'), // Index 2
+        SidebarXItem(icon: Icons.person, label: 'Profile'), // Index 3
       ],
     );
   }
 }
-
