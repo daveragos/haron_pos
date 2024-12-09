@@ -26,7 +26,6 @@ class OrdersPage extends StatelessWidget {
                       subtitle: Text(order.totalAmount.toString()),
                       onTap: () {
                         showModalBottomSheet(
-
                           context: context,
                           builder: (context) {
                             return OrderDetailsPage(order: order);

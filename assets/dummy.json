@@ -11,28 +11,191 @@
     { "id": "9", "name": "Household Items" },
     { "id": "10", "name": "Personal Care" }
   ],
-  "products": [
-    { "id": "101", "name": "Coca Cola", "category": "Beverages", "price": 1.5, "quantity": 50, "unit": "pcs" },
-    { "id": "102", "name": "Pepsi", "category": "Beverages", "price": 1.4, "quantity": 40, "unit": "pcs" },
-    { "id": "103", "name": "Chips", "category": "Snacks", "price": 2.0, "quantity": 30, "unit": "pcs" },
-    { "id": "104", "name": "Chocolate Bar", "category": "Snacks", "price": 1.0, "quantity": 100, "unit": "pcs" },
-    { "id": "105", "name": "Apples", "category": "Produce", "price": 3.0, "quantity": 100, "unit": "kg" },
-    { "id": "106", "name": "Bananas", "category": "Produce", "price": 2.5, "quantity": 80, "unit": "kg" },
-    { "id": "107", "name": "Milk", "category": "Dairy", "price": 1.2, "quantity": 60, "unit": "liters" },
-    { "id": "108", "name": "Cheese", "category": "Dairy", "price": 4.0, "quantity": 40, "unit": "pcs" },
-    { "id": "109", "name": "Bread", "category": "Bakery", "price": 2.0, "quantity": 50, "unit": "pcs" },
-    { "id": "110", "name": "Croissant", "category": "Bakery", "price": 1.5, "quantity": 30, "unit": "pcs" },
-    { "id": "111", "name": "Frozen Pizza", "category": "Frozen Foods", "price": 5.0, "quantity": 20, "unit": "pcs" },
-    { "id": "112", "name": "Ice Cream", "category": "Frozen Foods", "price": 3.5, "quantity": 50, "unit": "pcs" },
-    { "id": "113", "name": "Chicken Breast", "category": "Meat", "price": 6.0, "quantity": 30, "unit": "kg" },
-    { "id": "114", "name": "Beef Steak", "category": "Meat", "price": 8.0, "quantity": 20, "unit": "kg" },
-    { "id": "115", "name": "Salmon Fillet", "category": "Seafood", "price": 12.0, "quantity": 15, "unit": "kg" },
-    { "id": "116", "name": "Shrimp", "category": "Seafood", "price": 10.0, "quantity": 10, "unit": "kg" },
-    { "id": "117", "name": "Dish Soap", "category": "Household Items", "price": 2.0, "quantity": 40, "unit": "pcs" },
-    { "id": "118", "name": "Laundry Detergent", "category": "Household Items", "price": 7.0, "quantity": 30, "unit": "pcs" },
-    { "id": "119", "name": "Shampoo", "category": "Personal Care", "price": 4.0, "quantity": 25, "unit": "pcs" },
-    { "id": "120", "name": "Toothpaste", "category": "Personal Care", "price": 3.0, "quantity": 35, "unit": "pcs" }
-  ],
+
+    "products": [
+      {
+        "id": "101",
+        "name": "Coca Cola",
+        "category": "Beverages",
+        "price": 1.5,
+        "quantity": 50,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/101.jpg"
+      },
+      {
+        "id": "102",
+        "name": "Pepsi",
+        "category": "Beverages",
+        "price": 1.4,
+        "quantity": 40,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/102.jpg"
+      },
+      {
+        "id": "103",
+        "name": "Chips",
+        "category": "Snacks",
+        "price": 2.0,
+        "quantity": 30,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/103.jpg"
+      },
+      {
+        "id": "104",
+        "name": "Chocolate Bar",
+        "category": "Snacks",
+        "price": 1.0,
+        "quantity": 100,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/104.jpg"
+      },
+      {
+        "id": "105",
+        "name": "Apples",
+        "category": "Produce",
+        "price": 3.0,
+        "quantity": 100,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/105.jpg"
+      },
+      {
+        "id": "106",
+        "name": "Bananas",
+        "category": "Produce",
+        "price": 2.5,
+        "quantity": 80,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/106.jpg"
+      },
+      {
+        "id": "107",
+        "name": "Milk",
+        "category": "Dairy",
+        "price": 1.2,
+        "quantity": 60,
+        "unit": "liters",
+        "imageUrl": "assets/pictures/107.jpg"
+      },
+      {
+        "id": "108",
+        "name": "Cheese",
+        "category": "Dairy",
+        "price": 4.0,
+        "quantity": 40,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/108.jpg"
+      },
+      {
+        "id": "109",
+        "name": "Bread",
+        "category": "Bakery",
+        "price": 2.0,
+        "quantity": 50,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/109.jpg"
+      },
+      {
+        "id": "110",
+        "name": "Croissant",
+        "category": "Bakery",
+        "price": 1.5,
+        "quantity": 30,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/110.jpg"
+      },
+      {
+        "id": "111",
+        "name": "Frozen Pizza",
+        "category": "Frozen Foods",
+        "price": 5.0,
+        "quantity": 20,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/111.jpg"
+      },
+      {
+        "id": "112",
+        "name": "Ice Cream",
+        "category": "Frozen Foods",
+        "price": 3.5,
+        "quantity": 50,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/112.jpg"
+      },
+      {
+        "id": "113",
+        "name": "Chicken Breast",
+        "category": "Meat",
+        "price": 6.0,
+        "quantity": 30,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/113.jpg"
+      },
+      {
+        "id": "114",
+        "name": "Beef Steak",
+        "category": "Meat",
+        "price": 8.0,
+        "quantity": 20,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/114.jpg"
+      },
+      {
+        "id": "115",
+        "name": "Salmon Fillet",
+        "category": "Seafood",
+        "price": 12.0,
+        "quantity": 15,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/115.jpg"
+      },
+      {
+        "id": "116",
+        "name": "Shrimp",
+        "category": "Seafood",
+        "price": 10.0,
+        "quantity": 10,
+        "unit": "kg",
+        "imageUrl": "assets/pictures/116.jpg"
+      },
+      {
+        "id": "117",
+        "name": "Dish Soap",
+        "category": "Household Items",
+        "price": 2.0,
+        "quantity": 40,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/117.jpg"
+      },
+      {
+        "id": "118",
+        "name": "Laundry Detergent",
+        "category": "Household Items",
+        "price": 7.0,
+        "quantity": 30,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/118.jpg"
+      },
+      {
+        "id": "119",
+        "name": "Shampoo",
+        "category": "Personal Care",
+        "price": 4.0,
+        "quantity": 25,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/119.jpg"
+      },
+      {
+        "id": "120",
+        "name": "Toothpaste",
+        "category": "Personal Care",
+        "price": 3.0,
+        "quantity": 35,
+        "unit": "pcs",
+        "imageUrl": "assets/pictures/120.jpg"
+      }
+    ],
+
+
   "transactions": [
     {
       "id": "T001",

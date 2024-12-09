@@ -22,6 +22,9 @@ class Product {
   @HiveField(5)
   final String unit;
 
+  @HiveField(6)
+  final String imageUrl;
+
   Product({
     required this.id,
     required this.name,
@@ -29,6 +32,8 @@ class Product {
     required this.price,
     required this.quantity,
     required this.unit,
+    this.imageUrl = 'assets/pictures/101.jpg',
+
   });
 
 
@@ -40,6 +45,7 @@ class Product {
       price: json['price'],
       quantity: json['quantity'],
       unit: json['unit'],
+      imageUrl: json['imageUrl'],
     );
   }
 
@@ -51,6 +57,7 @@ class Product {
       'price': price,
       'quantity': quantity,
       'unit': unit,
+      'image': imageUrl,
     };
   }
 
@@ -61,6 +68,7 @@ class Product {
     double? price,
     int? quantity,
     String? unit,
+    String? imageUrl,
   }) {
     return Product(
       id: id ?? this.id,
@@ -69,6 +77,7 @@ class Product {
       price: price ?? this.price,
       quantity: quantity ?? this.quantity,
       unit: unit ?? this.unit,
+      imageUrl: imageUrl ?? this.imageUrl,
     );
   }
 }
